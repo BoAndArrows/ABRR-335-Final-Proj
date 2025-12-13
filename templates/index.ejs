@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calorie Counter</title>
+
+
+    <!-- this is the external css file served by express
+    requirement of projct: use background color, color, font size -->
+    <link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- i used inter as the required google font here -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="fullpage">
+
+        <h1>Calorie Counter</h1>
+
+
+        <!-- this is the form to add a food entry, for submitting data to backend route for handlng API + mongo -->
+        <form method="POST" action="/calories/add">
+
+        <table>
+            <tr>
+            <td><label>Food:</label></td>
+            <td><input type="text" name="food" required></td>
+
+            <td style="padding-left: 25px;"><label>Calories:</label></td>
+            <td><input type="number" name="calories" required></td>
+            </tr>
+        </table>
+
+        <button type="reset">Reset</button>
+        <button type="submit">Add Entry</button>
+
+        </form>
+
+        <hr>
+    <!-- goes to page that displays stored entries for calories -->
+        <a href="/history">View Calorie History</a>
+
+        <% if (message) { %>
+        <p><b><%= message %></b></p>
+        <% } %>
+
+    </div>
+</body>
+</html>

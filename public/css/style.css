@@ -1,0 +1,53 @@
+
+
+html {
+    font-size: 16px;
+}
+
+body {
+    background-color: antiquewhite;
+    color: #222;
+    border: 0.7rem double brown;
+    margin: 1rem auto;
+    padding: 1rem;
+    max-width: 60rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.fullpage {
+    border: 1rem solid #2c7be5;
+    padding: 2rem;
+    background: white;
+}
+
+h1 {
+    font-size: 2rem;
+    text-decoration: underline;
+}
+
+label {
+    font-weight: bold;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+td {
+    border: 0.15rem double gray;
+    padding: 0.5rem;
+}
+
+input[type="text"],
+input[type="number"] {
+    padding: 0.4rem;
+    width: 200px;
+}
+
+button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+}

@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.set("view engine", "ejs");
-app.set("views", path.resolve(__dirname, "templates"));
+app.set("views", path.resolve(__dirname, "..", "templates"));
 
 app.get("/", async (req, res) => {
     res.render("placeholder");

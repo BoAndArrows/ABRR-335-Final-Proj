@@ -2,50 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Calorie Counter</title>
-
-
-    <!-- this is the external css file served by express
-    requirement of projct: use background color, color, font size -->
+    <title>Calorie Calculator</title>
     <link rel="stylesheet" href="/css/style.css">
-
-
-    <!-- i used inter as the required google font here -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
 </head>
-
 <body>
-    <div class="fullpage">
-
-        <h1>Calorie Counter</h1>
-
-
-        <!-- this is the form to add a food entry, for submitting data to backend route for handlng API + mongo -->
-        <form method="POST" action="/calories/add">
-
-        <table>
-            <tr>
-            <td><label>Food:</label></td>
-            <td><input type="text" name="food" required></td>
-
-            <td style="padding-left: 25px;"><label>Calories:</label></td>
-            <td><input type="number" name="calories" required></td>
-            </tr>
-        </table>
-
+    <div class="search-btn">
+        <a href="/search">Search</a>
+    </div>
+    
+    <div class="form-container">
+        <h1>Calorie Calculator</h1>
+        
+        <form method="POST" action="/calculate">
+        <h2>Personal Information</h2>
+        
+        <label>Name:</label>
+        <input type="text" name="name" required>
+        
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        
+        <label>Gender:</label>
+        <div>
+            <input type="radio" name="gender" value="male" required> Male
+            <input type="radio" name="gender" value="female" required> Female
+        </div>
+        
+        <label>Age:</label>
+        <input type="number" name="age" min="1" max="120" required>
+        
+        <label>Height:</label>
+        <input type="number" name="feet" min="0" max="8" placeholder="Feet" class="height-input" required>
+        <input type="number" name="inches" min="0" max="11" placeholder="Inches" class="height-input" required>
+        
+        <label>Weight (pounds):</label>
+        <input type="number" name="weight" min="1" step="0.1" required>
+        
+        <h2>Activity Level</h2>
+        
+        <label>Activity Level:</label>
+        <select name="activityLevel" required>
+            <option value="">-- Select --</option>
+            <option value="sedentary">Sedentary</option>
+            <option value="lightly">Lightly Active</option>
+            <option value="moderately">Moderately Active</option>
+            <option value="very">Very Active</option>
+            <option value="extremely">Extremely Active</option>
+        </select>
+        
+        <br><br>
+        <button type="submit">Calculate</button>
         <button type="reset">Reset</button>
-        <button type="submit">Add Entry</button>
-
-        </form>
-
-        <hr>
-    <!-- goes to page that displays stored entries for calories -->
-        <a href="/history">View Calorie History</a>
-
-        <% if (message) { %>
-        <p><b><%= message %></b></p>
-        <% } %>
-
+    </form>
     </div>
 </body>
 </html>

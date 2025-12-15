@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calorie Results</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <p><a href="/">Back to Calculator</a></p>
+    
+    <h1>Calorie Results for <%= user.name %></h1>
+    
+    <h2>Your Information</h2>
+    <p><strong>Email:</strong> <%= user.email %></p>
+    <p><strong>Age:</strong> <%= user.age %></p>
+    <p><strong>Height:</strong> <%= user.heightFeet %> ft <%= user.heightInches %> in</p>
+    <p><strong>Weight:</strong> <%= user.weight %> lbs</p>
+    <p><strong>Activity Level:</strong> <%= user.activityLevel %></p>
+    
+    <h2>Weight Loss</h2>
+    <table>
+        <tr>
+            <th>Goal</th>
+            <th>Daily Calories</th>
+        </tr>
+        <tr>
+            <td>Lose 0.5 lb/week</td>
+            <td><%= results.lose05 %> calories/day</td>
+        </tr>
+        <tr>
+            <td>Lose 1 lb/week</td>
+            <td><%= results.lose1 %> calories/day</td>
+        </tr>
+    </table>
+    
+    <h2>Weight Gain</h2>
+    <table>
+        <tr>
+            <th>Goal</th>
+            <th>Daily Calories</th>
+        </tr>
+        <tr>
+            <td>Gain 0.5 lb/week</td>
+            <td><%= results.gain05 %> calories/day</td>
+        </tr>
+        <tr>
+            <td>Gain 1 lb/week</td>
+            <td><%= results.gain1 %> calories/day</td>
+        </tr>
+    </table>
+</body>
+</html>

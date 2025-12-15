@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Search</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <p><a href="/">Back to Calculator</a></p>
+    
+    <h1>Administrator Search</h1>
+    
+    <h2>Search User by Name</h2>
+    <form method="POST" action="/search">
+        <label>Name:</label>
+        <input type="text" name="searchName" required>
+        <button type="submit">Search</button>
+    </form>
+    
+    <% if (searchResults) { %>
+        <h2>Search Results</h2>
+        <% if (searchResults.length === 0) { %>
+            <p>No users found with that name.</p>
+        <% } else { %>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                    <th>Weight</th>
+                    <th>Actions</th>
+                </tr>
+                <% searchResults.forEach(user => { %>
+                    <tr>
+                        <td><%= user.name %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.age %></td>
+                        <td><%= user.weight %> lbs</td>
+                        <td>
+                            <a href="/user/<%= user._id %>">View Info</a> | 
+                            <form method="POST" action="/delete/<%= user._id %>" class="inline-form">
+                                <button type="submit" onclick="return confirm('Delete this user?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }); %>
+            </table>
+        <% } %>
+    <% } %>
+    
+    <h2>Clear All Users</h2>
+    <form method="POST" action="/deleteAll">
+        <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete ALL users?')">Clear All Users</button>
+    </form>
+</body>
+</html>

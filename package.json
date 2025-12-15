@@ -1,5 +1,13 @@
 {
+  "name": "calorie-calculator",
+  "version": "1.0.0",
+  "description": "A calorie calculator web application using Node.js, Express, and MongoDB",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
+    "dotenv": "^16.0.3",
     "ejs": "^3.1.10",
     "express": "^5.2.1",
     "mongodb": "^7.0.0",

@@ -142,7 +142,7 @@ app.post("/calculate", async (request, response) => {
                 activityLevel
             });
         } else {
-            /* Update user information */
+            /* Update user information (their email is the unique identifier)*/
             user.name = name;
             user.gender = gender;
             user.age = Number(age);

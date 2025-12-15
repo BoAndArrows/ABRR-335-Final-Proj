@@ -1,59 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Calorie Calculator</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
     <div class="search-btn">
         <a href="/search">Search</a>
     </div>
-    
+
     <div class="form-container">
         <h1>Calorie Calculator</h1>
-        
+
         <form method="POST" action="/calculate">
-        <h2>Personal Information</h2>
-        
-        <label>Name:</label>
-        <input type="text" name="name" required>
-        
-        <label>Email:</label>
-        <input type="email" name="email" required>
-        
-        <label>Gender:</label>
-        <div>
-            <input type="radio" name="gender" value="male" required> Male
-            <input type="radio" name="gender" value="female" required> Female
-        </div>
-        
-        <label>Age:</label>
-        <input type="number" name="age" min="1" max="120" required>
-        
-        <label>Height:</label>
-        <input type="number" name="feet" min="0" max="8" placeholder="Feet" class="height-input" required>
-        <input type="number" name="inches" min="0" max="11" placeholder="Inches" class="height-input" required>
-        
-        <label>Weight (pounds):</label>
-        <input type="number" name="weight" min="1" step="0.1" required>
-        
-        <h2>Activity Level</h2>
-        
-        <label>Activity Level:</label>
-        <select name="activityLevel" required>
-            <option value="">-- Select --</option>
-            <option value="sedentary">Sedentary</option>
-            <option value="lightly">Lightly Active</option>
-            <option value="moderately">Moderately Active</option>
-            <option value="very">Very Active</option>
-            <option value="extremely">Extremely Active</option>
-        </select>
-        
-        <br><br>
-        <button type="submit">Calculate</button>
-        <button type="reset">Reset</button>
+            <h2>Personal Information</h2>
+
+            <div class="form-field">
+                <label>Name:</label>
+                <input type="text" name="name" required>
+            </div>
+
+            <div class="form-field">
+                <label>Email:</label>
+                <input type="email" name="email" required>
+            </div>
+
+            <div class="radio-group">
+                <label>Gender:</label>
+                <div class="radio-group">
+                    <!-- <input type="radio" name="gender" value="male" required> Male
+                <input type="radio" name="gender" value="female" required> Female -->
+                    <div>
+                        <input type="radio" name="gender" id="male" value="male" required>
+                        <label for="male" style="display: inline; font-weight: normal;">Male</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="gender" id="female" value="female" required>
+                        <label for="female" style="display: inline; font-weight: normal;">Female</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-field">
+                <label>Age:</label>
+                <input type="number" name="age" min="1" max="120" required>
+            </div>
+
+            <div class="height-group">
+                <label>Height:</label>
+                <input type="number" name="feet" min="0" max="8" placeholder="Feet" class="height-input" required>
+                <input type="number" name="inches" min="0" max="11" placeholder="Inches" class="height-input" required>
+            </div>
+
+            <div class="form-field">
+                <label>Weight (pounds):</label>
+                <input type="number" name="weight" min="1" step="0.1" required>
+            </div>
+
+            <h2>Activity Level</h2>
+
+            <div class="form-field">
+                <label>Activity Level:</label>
+                <select name="activityLevel" required>
+                    <option value="">-- Select --</option>
+                    <option value="sedentary">Sedentary</option>
+                    <option value="lightly">Lightly Active</option>
+                    <option value="moderately">Moderately Active</option>
+                    <option value="very">Very Active</option>
+                    <option value="extremely">Extremely Active</option>
+                </select>
+            </div>
+
+            <div class="button-container">
+                <br><br>
+                <button type="submit">Calculate</button>
+                <button type="reset">Reset</button>
+        </form>
+    </div>
     </form>
     </div>
 </body>
+
 </html>

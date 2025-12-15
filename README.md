@@ -1,6 +1,6 @@
 **Submitted by:** Example Smith (superterp)
 
-**Group Members:** Alvin Persuad (), Bo Cheung (cheung33), Raushan Oshan (raushan), Rod Tavakoli ()
+**Group Members:** Alvin Persuad (apersau1), Bo Cheung (cheung33), Raushan Oshan (raushan), Rod Tavakoli ()
 
 **App Description:** Calorie Calculator that helps you keep track of how much you should eat for when bulking or cutting based on your weight, height, etc.
 

@@ -37,22 +37,36 @@ async function searchCalories(targetCalories) {
         {
             headers: {Authorization: `Bearer ${token}` },
             params: {
-                method: "foods.search",
+                method: "recipes.search",
                 search_expression: "recipe",
                 max_results: 10,
                 format: "json"
             }
         }
     );
-const foods = response.data.foods.food;
+
+    if (response.data.error) {
+            console.error("FatSecret error:", response.data.error);
+            return [];
+    }
+
+    const foods = response.data.foods.food;
+
+    const raw = response.data?.recipes?.recipe;
+    if (!raw) return [];
+
+    const recipes = Array.isArray(raw) ? raw : [raw];
 
     // Find closest calorie matches
-    const withCalories = foods
-        .map(f => {
-            const calories = parseInt(f.food_description.match(/Calories:\s*(\d+)/)?.[1]);
-            return calories ? {...f, calories } : null;
-        })
-        .filter(Boolean);
+    const withCalories = recipes
+        .map(r => ({
+            id: r.recipe_id,
+            name: r.recipe_name,
+            calories: parseInt(r.recipe_calories),
+            image: r.recipe_image,
+            description: r.recipe_description
+        }))
+        .filter(r => !isNaN(r.calories));
 
     withCalories.sort(
         (a, b) =>
@@ -60,7 +74,7 @@ const foods = response.data.foods.food;
             Math.abs(b.calories - targetCalories)
     );
 
-    return withCalories.slice(0, 2);
+    return withCalories.slice(0, 3);
 }
 
 module.exports = {searchCalories};

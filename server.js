@@ -197,10 +197,10 @@ app.post("/calculate", async (request, response) => {
         user.heightInches = Number(inches);
         
         const foodMatches = {
-            lose05: await searchCalories(results.lose05),
-            lose1: await searchCalories(results.lose1),
-            gain05: await searchCalories(results.gain05),
-            gain1: await searchCalories(results.gain1)
+            lose05: normalizeFoods(await searchCalories(results.lose05)),
+            lose1: normalizeFoods(await searchCalories(results.lose1)),
+            gain05: normalizeFoods(await searchCalories(results.gain05)),
+            gain1: normalizeFoods(await searchCalories(results.gain1))
         };
 
 
@@ -212,6 +212,16 @@ app.post("/calculate", async (request, response) => {
         response.send("Error: " + err.message);
     }
 });
+
+//lazy solution
+function normalizeFoods(foods) {
+    return foods.map(f => ({
+        food_name: f.name,
+        food_description: f.description,
+        calories: f.calories,
+        food_image: f.image
+    }));
+}
 
 app.listen(portNumber);
 console.log(`Web server started at http://localhost:${portNumber}`);

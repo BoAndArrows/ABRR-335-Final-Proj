@@ -39,8 +39,15 @@ app.post("/search", async (request, response) => {
         const User = require('./model/User');
         const { searchName } = request.body;
         const searchResults = await User.find({ name: searchName });
+
+        const foodMatches = {
+            lose05: await searchCalories(results.lose05),
+            lose1: await searchCalories(results.lose1),
+            gain05: await searchCalories(results.gain05),
+            gain1: await searchCalories(results.gain1)
+        };
         
-        response.render("search", { searchResults });
+        response.render("search", {searchResults, foodMatches });
     } catch (err) {
         console.error(err);
         response.send("Error: " + err.message);

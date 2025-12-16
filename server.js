@@ -91,10 +91,10 @@ app.get("/user/:userId", async (request, response) => {
         user.heightInches = user.height % 12;
 
         const foodMatches = {
-            lose05: await searchCalories(results.lose05),
-            lose1: await searchCalories(results.lose1),
-            gain05: await searchCalories(results.gain05),
-            gain1: await searchCalories(results.gain1)
+            lose05: normalizeFoods(await searchCalories(results.lose05)),
+            lose1: normalizeFoods(await searchCalories(results.lose1)),
+            gain05: normalizeFoods(await searchCalories(results.gain05)),
+            gain1: normalizeFoods(await searchCalories(results.gain1))
         };
         
         response.render("result", {user, results, foodMatches});

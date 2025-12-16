@@ -37,8 +37,8 @@ async function searchCalories(targetCalories) {
         {
             headers: {Authorization: `Bearer ${token}` },
             params: {
-                method: "recipes.search",
-                search_expression: "recipe",
+                method: "foods.search",
+                search_expression: "chicken",
                 max_results: 10,
                 format: "json"
             }
@@ -50,31 +50,34 @@ async function searchCalories(targetCalories) {
             return [];
     }
 
-    const foods = response.data.foods.food;
-
     const raw = response.data?.recipes?.recipe;
+
     if (!raw) return [];
 
     const recipes = Array.isArray(raw) ? raw : [raw];
 
     // Find closest calorie matches
-    const withCalories = recipes
-        .map(r => ({
-            id: r.recipe_id,
-            name: r.recipe_name,
-            calories: parseInt(r.recipe_calories),
-            image: r.recipe_image,
-            description: r.recipe_description
-        }))
-        .filter(r => !isNaN(r.calories));
+    const parsed = foods
+        .map(f => {
+            const match = f.food_description?.match(/Calories:\s*(\d+)/);
+            if (!match) return null;
 
-    withCalories.sort(
-        (a, b) =>
-            Math.abs(a.calories - targetCalories) -
-            Math.abs(b.calories - targetCalories)
+            return {
+                name: f.food_name,
+                description: f.food_description,
+                calories: Number(match[1]),
+                image: f.food_image || null
+            };
+        })
+        .filter(Boolean);
+
+    parsed.sort(
+    (a, b) =>
+        Math.abs(a.calories - targetCalories) -
+        Math.abs(b.calories - targetCalories)
     );
 
-    return withCalories.slice(0, 3);
+    return parsed.slice(0, 3);
 }
 
 module.exports = {searchCalories};

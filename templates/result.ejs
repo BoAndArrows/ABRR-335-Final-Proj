@@ -48,5 +48,37 @@
             <td><%= results.gain1 %> calories/day</td>
         </tr>
     </table>
+
+    <h2>Food Suggestions</h2>
+    <table>
+        <tr>
+            <th>Recipe Details</th>
+            <th>Image</th>
+        </tr>
+
+        <% Object.entries(foodMatches).forEach(([goal, foods]) => { %>
+            <tr>
+                <td colspan="2"><strong><%= goal %> calories</strong></td>
+            </tr>
+
+            <% foods.forEach(food => { %>
+                <tr>
+                    <td>
+                        <h4><%= food.food_name %></h4>
+                        <p><%= food.food_description %></p>
+                        <p><strong>Calories:</strong> <%= food.calories %></p>
+                    </td>
+                    <td>
+                        <% if (food.food_image) { %>
+                            <img src="<%= food.food_image %>" width="150">
+                        <% } else { %>
+                            No image available
+                        <% } %>
+                    </td>
+                </tr>
+            <% }) %>
+        <% }) %>
+        
+    </table>
 </body>
 </html>

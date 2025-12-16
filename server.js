@@ -6,7 +6,9 @@ require("dotenv").config({
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
-const portNumber = 6767;
+const portNumber = process.env.PORT || 6767;
+
+const {searchCalories} = require("./services/fatsecret")
 
 /* Middleware */
 app.use(express.urlencoded({ extended: false }));
@@ -186,8 +188,17 @@ app.post("/calculate", async (request, response) => {
         user.heightFeet = Number(feet);
         user.heightInches = Number(inches);
         
+        const foodMatches = {
+            lose05: await searchCalories(results.lose05),
+            lose1: await searchCalories(results.lose1),
+            gain05: await searchCalories(results.gain05),
+            gain1: await searchCalories(results.gain1)
+        };
+
+
         /* Redirect to results page */
-        response.render("result", { user, results });
+        response.render("result", { user, results, foodMatches });
+        
     } catch (err) {
         console.error(err);
         response.send("Error: " + err.message);

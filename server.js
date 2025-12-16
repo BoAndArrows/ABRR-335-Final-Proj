@@ -1,7 +1,8 @@
 const path = require("path");
-require("dotenv").config({
-    path: path.resolve(__dirname, "credentialsDontPost/settings.env"),
-});
+
+// require("dotenv").config({
+//     path: path.resolve(__dirname, "credentialsDontPost/settings.env"),
+// });
 
 const mongoose = require("mongoose");
 const express = require("express");
@@ -198,7 +199,7 @@ app.post("/calculate", async (request, response) => {
 
         /* Redirect to results page */
         response.render("result", { user, results, foodMatches });
-        
+
     } catch (err) {
         console.error(err);
         response.send("Error: " + err.message);

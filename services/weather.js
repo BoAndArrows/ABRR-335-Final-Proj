@@ -29,7 +29,7 @@ async function getWeather(location){
         description,
         temperature,
         icon,
-        isGoodForOutdoor
+        niceToGoOut
     };
 }
 module.exports = {getWeather};

@@ -4,7 +4,7 @@
 
 **App Description:** Calorie Calculator that helps you keep track of how much you should eat for when bulking or cutting based on your weight, height, etc. Also displays weather in College Park and tells you if its good to go outside. If it starts working by submission, it will also give some recipes for each calorie goal if the whitelist ever goes through.
 
-**YouTube Video Link:** [Link](https://youtu.be/2nQ5nyAIH3o)
+**YouTube Video Link:** [https://youtu.be/2nQ5nyAIH3o](https://youtu.be/2nQ5nyAIH3o)
 
 **APIs:** WeatherStack (https://weatherstack.com/), Recipe API Fatsecret (https://platform.fatsecret.com/)
 

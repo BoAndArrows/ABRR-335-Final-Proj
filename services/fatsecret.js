@@ -1,6 +1,9 @@
 const axios = require("axios");
 const qs = require("qs");
 
+let cachedToken = null;
+let tokenExpiresAt = 0;
+
 async function getAccessToken() {
     if (cachedToken && Date.now() < tokenExpiresAt) {
         return cachedToken;

@@ -4,6 +4,17 @@ const qs = require("qs");
 let cachedToken = null;
 let tokenExpiresAt = 0;
 
+/**
+ * This was the most annoying api that I could choose to work with in one day. 
+ * the main thing that stopped me and made me pivot to weather was the whitelist
+ * Not only do we have to pay to allow for any IP address to call the api
+ * but learning and figuring out the data structure and using it was a headache.
+ */
+
+
+
+
+
 async function getAccessToken() {
     if (cachedToken && Date.now() < tokenExpiresAt) {
         return cachedToken;

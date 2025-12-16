@@ -49,7 +49,24 @@
         </tr>
     </table>
 
+    <h2>Weather Check</h2>
+    <p><strong>Location:</strong> <%= weather.location %></p>
+    <p><strong>Condition:</strong> <%= weather.description %></p>
+    <p><strong>Temperature:</strong> <%= weather.temperature %>°F</p>
+
+    <% if (weather.isGoodForOutdoor) { %>
+        <p class="goodWeather">
+            The sky is clear, it might be a good time to go outside!
+        </p>
+    <% } else { %>
+        <p class="badWeather">
+            Uh oh, looks like the weather isn't so great. Better stay inside...
+        </p>
+    <% } %>
+
+
     <h2>Food Suggestions</h2>
+    <p>This may not be working due to api whitelist.</p>
     <table>
         <tr>
             <th>Recipe Details</th>

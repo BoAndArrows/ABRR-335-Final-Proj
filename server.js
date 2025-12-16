@@ -9,7 +9,10 @@ const express = require("express");
 const app = express();
 const portNumber = process.env.PORT || 6767;
 
+//API call files
 const {searchCalories} = require("./services/fatsecret")
+const {getWeather} = require("./services/weather");
+
 
 /* Middleware */
 app.use(express.urlencoded({ extended: false }));
@@ -96,8 +99,10 @@ app.get("/user/:userId", async (request, response) => {
             gain05: normalizeFoods(await searchCalories(results.gain05)),
             gain1: normalizeFoods(await searchCalories(results.gain1))
         };
+
+        const weather = await getWeather("College Park, MD");
         
-        response.render("result", {user, results, foodMatches});
+        response.render("result", {user, results, foodMatches, weather});
     } catch (err) {
         console.error(err);
         response.send("Error: " + err.message);
@@ -204,8 +209,10 @@ app.post("/calculate", async (request, response) => {
         };
 
 
+        const weather = await getWeather("College Park, MD");
+
         /* Redirect to results page */
-        response.render("result", { user, results, foodMatches });
+        response.render("result", {user, results, foodMatches, weather});
 
     } catch (err) {
         console.error(err);

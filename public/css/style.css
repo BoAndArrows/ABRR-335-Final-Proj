@@ -114,3 +114,13 @@ th {
 a {
     color: blue;
 }
+
+.goodWeather {
+    color: green; 
+    font-weight: bold;
+}
+
+.badWeather {
+    color: red; 
+    font-weight: bold;
+}
